@@ -8,7 +8,10 @@ public class Main {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    createAndShowGUI();
+                    /*Mau ngetes Registration View */
+                    createAndShowReg();
+                    
+                    // createAndShowGUI(); //dikomen dulu
                 } catch (Exception e) {
                     e.printStackTrace(); 
                 }
@@ -19,4 +22,9 @@ public class Main {
     public static void createAndShowGUI() throws Exception {
         new Views();
     }
+
+    public static void createAndShowReg() throws Exception {
+        new StudentRegisterView();
+    }
+    
 }
