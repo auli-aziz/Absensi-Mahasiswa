@@ -1,6 +1,4 @@
 import javax.swing.table.DefaultTableModel;
-
-import proyek.Constants;
  
 /**
  * @author Kelompok 6

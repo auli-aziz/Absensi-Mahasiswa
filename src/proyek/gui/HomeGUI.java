@@ -6,8 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import proyek.MainFrame;
-import proyek.user.LoginViews;
-
 import static proyek.database.AbsensiManager.fmt;
 import static proyek.database.AbsensiManager.cal;
 
@@ -102,6 +100,6 @@ public class HomeGUI extends JPanel {
      * Akan dipanggil jika pengguna menekan "loginButton"
      */
     private static void handleToLogin() {
-        MainFrame.getInstance().navigateTo(LoginViews.KEY);
+        MainFrame.getInstance().navigateTo(LoginGUI.KEY);
     }
 }

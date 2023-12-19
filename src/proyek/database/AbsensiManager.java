@@ -12,7 +12,7 @@ public class AbsensiManager {
     /**
      * Menambahkan absensi baru ke listAbsensi.
      *
-     * @param absensi absensi object untuk ditambahkan.
+     * @param daftarAbsensi absensi object untuk ditambahkan.
      */
     public static void addDaftarAbsensi(DaftarAbsensi daftarAbsensi) {
         DaftarAbsensi[] tempListDaftarAbsensi = new DaftarAbsensi[listDaftarAbsensi.length + 1];

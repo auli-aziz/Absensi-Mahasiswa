@@ -1,46 +1,75 @@
 package proyek.gui;
 
+import proyek.user.Mahasiswa;
+
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import proyek.MainFrame;
-
-import java.awt.*;
-import java.awt.event.*;
+import proyek.user.LoginManager;
 
 public class RegisterGUI extends JPanel {
     public static final String KEY = "REGISTER";
-    public JTextField nameTextField;
-    public JTextField npmTextField;
-    public JTextField facultyTextField;
-    public JTextField majorTextField;
-    public JPasswordField passwordTextField;
+    private JPanel mainPanel;
+    private JLabel nameLabel;
+    private JTextField nameTextField;
+    private JLabel phoneLabel;
+    private JTextField phoneTextField;
+    private JLabel passwordLabel;
+    private JPasswordField passwordField;
+    private JButton registerButton;
+    private LoginManager loginManager;
     private JButton backButton;
 
-    public RegisterGUI() {
-        JFrame frame = new JFrame("Registration Form");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    public RegisterGUI(LoginManager loginManager) {
+        super(new BorderLayout()); // Setup layout, Feel free to make any changes
+        this.loginManager = loginManager;
 
-        setLayout(new GridLayout(7, 2, 10, 10));
-        setBackground(Color.WHITE);
+        // Set up main panel, Feel free to make any changes
+        mainPanel = new JPanel(new GridBagLayout());
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        mainPanel.setBackground(Color.WHITE);
 
         initGUI();
+
+        add(mainPanel, BorderLayout.CENTER);
     }
 
+    /**
+     * Method untuk menginisialisasi GUI.
+     * Selama funsionalitas sesuai dengan soal, tidak apa apa tidak 100% sama.
+     * Be creative and have fun!
+     */
     private void initGUI() {
-        // Membuat views swing UI components 
-        nameTextField = new JTextField(26);
-        npmTextField = new JTextField(26);
-        passwordTextField = new JPasswordField(26);
-        facultyTextField = new JTextField(26);
-        majorTextField = new JTextField(26);
+        // tampilan registerGUI
+        setBackground(Color.WHITE);
+        setLayout(new GridLayout(5, 2, 10, 10));
 
-        Dimension textFieldSize = new Dimension(300, 30);
-        nameTextField.setPreferredSize(textFieldSize);
-        npmTextField.setPreferredSize(textFieldSize);
-        facultyTextField.setPreferredSize(textFieldSize);
-        majorTextField.setPreferredSize(textFieldSize);
+        // membuat name label beserta text fieldnya
+        nameLabel = new JLabel("Masukkan nama Anda:");
+        nameTextField = new JTextField(10);
+        nameTextField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode("#97BFB1")));
+        nameTextField.setBackground(null);
 
+        // membuat phone label beserta text fieldnya
+        phoneLabel = new JLabel("Masukkan nomor NPM Anda");
+        phoneTextField = new JTextField();
+        phoneTextField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode("#97BFB1")));
+        phoneTextField.setBackground(null);
+
+        // membuat password label beserta tect fieldnya
+        passwordLabel = new JLabel("Masukkan password Anda:");
+        passwordField = new JPasswordField();
+        passwordField.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode("#97BFB1")));
+        passwordField.setBackground(null);
+
+        // membuat backbutton
         backButton = new JButton("Kembali");
+        backButton.setBackground(Color.decode("#97BFB1"));
+        backButton.setForeground(Color.WHITE);
+        backButton.setPreferredSize(new Dimension(200, 30));
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -48,31 +77,67 @@ public class RegisterGUI extends JPanel {
             }
         });
 
-        JButton registerButton = new JButton("Register");
-        registerButton.addActionListener(new RegistrationController(this));
+        // membuat registerbutton
+        registerButton = new JButton("Register");
+        registerButton.setBackground(Color.decode("#97BFB1"));
+        registerButton.setForeground(Color.WHITE);
+        registerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                handleRegister();
+            }
+        });
 
-        Dimension buttonSize = new Dimension(150, 40);
-        registerButton.setPreferredSize(buttonSize);
-
-        add(new JLabel("Name:"));
+        add(nameLabel);
         add(nameTextField);
-        add(new JLabel("NPM:"));
-        add(npmTextField);
-        add(new JLabel("Faculty:"));
-        add(facultyTextField);
-        add(new JLabel("Major:"));
-        add(majorTextField);
-        add(new JLabel("Password:"));
-        add(passwordTextField);
+        add(phoneLabel);
+        add(phoneTextField);
+        add(passwordLabel);
+        add(passwordField);
         add(backButton);
         add(registerButton);
     }
 
+    /**
+     * Method untuk kembali ke halaman home.
+     * Akan dipanggil jika pengguna menekan "backButton"
+     */
     private void handleBack() {
         MainFrame.getInstance().navigateTo(HomeGUI.KEY);
         nameTextField.setText("");
-        npmTextField.setText("");
-        facultyTextField.setText("");
-        majorTextField.setText("");
+        phoneTextField.setText("");
+        passwordField.setText("");
+    }
+
+    /**
+     * Method untuk mendaftarkan mahasiswa pada sistem.
+     * Akan dipanggil jika pengguna menekan "registerButton"
+     */
+    private void handleRegister() {
+        // kondisional jika nomor telepon bukan angka
+        if (!LoginManager.isNumeric(phoneTextField.getText())) {
+            JOptionPane.showMessageDialog(mainPanel, "Nomor Handphone harus berisi angka!", "Invalid Phone Number",
+                    JOptionPane.ERROR_MESSAGE);
+            phoneTextField.setText("");
+        }
+        // kondisional jika ada field yang kosong
+        if (nameTextField.getText().isEmpty() || phoneTextField.getText().isEmpty()
+                || String.valueOf(passwordField.getPassword()).isEmpty()) {
+            JOptionPane.showMessageDialog(mainPanel, "Semua field di atas wajib diisi!", "Empty Field",
+                    JOptionPane.ERROR_MESSAGE);
+        } else {
+            Mahasiswa mahasiswa = loginManager.register(nameTextField.getText(), phoneTextField.getText(),
+                    String.valueOf(passwordField.getPassword()));
+            if (mahasiswa == null) {
+                JOptionPane.showMessageDialog(mainPanel,
+                        "User dengan nama " + nameTextField.getText() + " dan nomor Handphone "
+                                + phoneTextField.getText() + " sudah ada!",
+                        "Registration Unsuccessful", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(mainPanel, "Berhasil membuat user dengan ID  " + mahasiswa.getId() + "!",
+                        "Registration Successful", JOptionPane.INFORMATION_MESSAGE);
+            }
+            handleBack();
+        }
     }
 }

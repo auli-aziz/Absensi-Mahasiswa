@@ -13,7 +13,6 @@ import proyek.user.Menu.DosenSystem;
 import proyek.user.Menu.MahasiswaSystem;
 import proyek.user.Dosen;
 import proyek.user.LoginManager;
-import proyek.user.LoginViews;
 import proyek.user.Mahasiswa;
 
 import java.awt.*;
@@ -23,15 +22,14 @@ public class MainFrame extends JFrame{
     private final Loginable[] loginablePanel;
     private final MahasiswaSystem mahasiswaSystem = new MahasiswaSystem();
     private final DosenSystem dosenSystem = new DosenSystem();
-    private final static CardLayout cards = new CardLayout();
-    public static final JPanel mainPanel = new JPanel(cards);
+    private final CardLayout cards = new CardLayout();
+    private final JPanel mainPanel = new JPanel(cards);
     private final LoginManager loginManager = new LoginManager(dosenSystem, mahasiswaSystem);
     private final HomeGUI homeGUI = new HomeGUI();
-    private final RegisterGUI registerGUI = new RegisterGUI();
+    private final RegisterGUI registerGUI = new RegisterGUI(loginManager);
     private final LoginGUI loginGUI = new LoginGUI(loginManager);
     private final DosenSystemGUI dosenSystemGUI = new DosenSystemGUI(dosenSystem);
     private final MahasiswaSystemGUI mahasiswaSystemGUI = new MahasiswaSystemGUI(mahasiswaSystem);
-    private final LoginViews loginSystemGUI = new LoginViews();
 
     private MainFrame() {
         super("Absensi Mahasiswa");
@@ -58,10 +56,9 @@ public class MainFrame extends JFrame{
     private void initGUI() {
         mainPanel.add(homeGUI, HomeGUI.KEY);
         mainPanel.add(registerGUI, RegisterGUI.KEY);
-        //mainPanel.add(loginGUI, LoginGUI.KEY);
+        mainPanel.add(loginGUI, LoginGUI.KEY);
         mainPanel.add(dosenSystemGUI, DosenSystemGUI.KEY);
         mainPanel.add(mahasiswaSystemGUI, MahasiswaSystemGUI.KEY);
-        mainPanel.add(loginSystemGUI, LoginViews.KEY);
     }
 
 

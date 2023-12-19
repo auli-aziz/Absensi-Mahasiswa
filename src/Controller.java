@@ -4,8 +4,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-
-import proyek.Constants;
  
 /**
  * @author Kelompok 6

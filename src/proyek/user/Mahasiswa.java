@@ -25,7 +25,22 @@ public class Mahasiswa {
      *         tidak.
      */
     public boolean login(String id, String password) {
-        return id.equals(this.id) && this.password.equals(password);
+        return id.equals(this.id) && authenticate(password);
+    }
+
+    /**
+     * Method otentikasi mahasiswa dengan password yang diberikan.
+     *
+     * @param password -> sandi password anggota untuk mengautentikasi.
+     * @return true jika ID dan password sesuai dengan instance mahasiswa, false jika
+     *         tidak.
+     */
+    protected boolean authenticate(String password) {
+        // mengecek kesesuaian password
+        if (this.password.equals(password)) {
+            return true;
+        }
+        return false;
     }
     
     public String getId() {
