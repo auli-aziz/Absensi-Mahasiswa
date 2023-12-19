@@ -10,7 +10,6 @@ import javax.swing.table.DefaultTableModel;
  *
  */
 public class Controller implements ActionListener {
-     
     private JTextField searchTermTextField = new JTextField(26);
     private DefaultTableModel model;
 

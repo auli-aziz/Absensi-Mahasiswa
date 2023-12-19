@@ -48,4 +48,9 @@ public class Main extends JFrame {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(Main::getInstance);
     }
+
+    public static void createAndShowReg() throws Exception {
+        new StudentRegisterView();
+    }
+    
 }
