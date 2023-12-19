@@ -26,7 +26,7 @@ public class MainFrame extends JFrame{
     private final JPanel mainPanel = new JPanel(cards);
     private final LoginManager loginManager = new LoginManager(dosenSystem, mahasiswaSystem);
     private final HomeGUI homeGUI = new HomeGUI();
-    private final RegisterGUI registerGUI = new RegisterGUI(loginManager);
+    private final RegisterGUI registerGUI = new RegisterGUI();
     private final LoginGUI loginGUI = new LoginGUI(loginManager);
     private final DosenSystemGUI dosenSystemGUI = new DosenSystemGUI(dosenSystem);
     private final MahasiswaSystemGUI mahasiswaSystemGUI = new MahasiswaSystemGUI(mahasiswaSystem);
