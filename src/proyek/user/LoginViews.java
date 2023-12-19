@@ -26,11 +26,9 @@ public class LoginViews extends JPanel {
     static JButton loginButton = new JButton("Login");
     static JButton resetButton = new JButton("Reset");
     static JCheckBox showPassword = new JCheckBox("Tunjukkan Password"); 
-
-    JTextField searchTermTextField = new JTextField(26);
     
     public LoginViews(){
-        setLayout(new GridLayout(4, 2, 10, 10));
+        setLayout(new GridLayout(7, 2, 10, 10));
         setBackground(Color.WHITE);
 
         // Membuat controller
@@ -60,10 +58,10 @@ public class LoginViews extends JPanel {
 
         // Menambahkan komponen label ke container
         add(userLabel);
-        add(NPMLabel);
-        add(passwordLabel);
         add(userTextField);
+        add(NPMLabel);
         add(NPMTextField);
+        add(passwordLabel);
         add(passwordField);
         add(showPassword);
         add(loginButton);

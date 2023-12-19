@@ -21,6 +21,7 @@ public class RegistrationController implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         String name = view.nameTextField.getText();
         String npm = view.npmTextField.getText();
+        String password = String.valueOf(view.passwordTextField.getPassword());
         String faculty = view.facultyTextField.getText();
         String major = view.majorTextField.getText();
 
