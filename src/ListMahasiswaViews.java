@@ -4,8 +4,8 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.Objects;
 
-public class ListMahasiswaViews extends JFrame {
-
+public class ListMahasiswaViews extends JPanel {
+    public static final String KEY = "LIST";
     private JTable mahasiswaTable, dosenTable;
     private JScrollPane mahasiswaScrollPane, dosenScrollPane;
     private DefaultTableModel mahasiswaTableModel, dosenTableModel;
@@ -17,9 +17,7 @@ public class ListMahasiswaViews extends JFrame {
     }
 
     private void initializeUI() {
-        setTitle("Data Mahasiswa dan Dosen");
-        setSize(800, 600);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(800, 800);
 
         mahasiswaTableModel = new DefaultTableModel(Constants.DATA, Constants.TABLE_HEADER);
         dosenTableModel = new DefaultTableModel(Constants.DATA2, Constants.TABLE_HEADER2);

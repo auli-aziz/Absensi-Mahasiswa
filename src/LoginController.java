@@ -11,12 +11,11 @@ public class LoginController implements ActionListener {
     private JTextField NPMTextField;
     private JPasswordField passwordField;
 
-    public LoginController(JTextField nama, JTextField NPM, JPasswordField password, DefaultTableModel model) {
+    public LoginController(JTextField nama, JTextField NPM, JPasswordField password) {
         super();
         this.userTextField = nama;
         this.NPMTextField = NPM;
         this.passwordField = password;
-        this.model = model;
     }
 
     @Override
@@ -36,7 +35,8 @@ public class LoginController implements ActionListener {
                     ListMahasiswaViews listMahasiswaViews = new ListMahasiswaViews();
 
                     // Tutup frame LoginViews
-                    ((LoginViews) userTextField.getTopLevelAncestor()).dispose();
+                    // ((LoginViews) userTextField.getTopLevelAncestor()).dispose();
+                    Main.navigateTo("LIST");
 
                     return;
                 }
@@ -52,7 +52,8 @@ public class LoginController implements ActionListener {
                     ListMahasiswaViews listMahasiswaViews = new ListMahasiswaViews();
 
                     // Tutup frame LoginViews
-                    ((LoginViews) userTextField.getTopLevelAncestor()).dispose();
+                    // ((LoginViews) userTextField.getTopLevelAncestor()).dispose();
+                    Main.navigateTo("LIST");
 
                     return;
                 }

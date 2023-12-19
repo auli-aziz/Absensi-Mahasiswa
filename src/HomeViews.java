@@ -1,16 +1,16 @@
-package proyek.gui;
+
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
-import proyek.MainFrame;
-import static proyek.database.AbsensiManager.fmt;
-import static proyek.database.AbsensiManager.cal;
-
-public class HomeGUI extends JPanel {
+public class HomeViews extends JPanel {
     public static final String KEY = "HOME";
+    public static SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
+    public static Calendar cal = Calendar.getInstance();
     private JLabel titleLabel;
     private JLabel dateLabel;
     private JPanel mainPanel;
@@ -18,7 +18,7 @@ public class HomeGUI extends JPanel {
     private JButton loginButton;
     private JButton registerButton;
 
-    public HomeGUI() {
+    public HomeViews() {
         super(new BorderLayout()); // Setup layout
 
         // Set up main panel
@@ -65,12 +65,12 @@ public class HomeGUI extends JPanel {
         registerButton = new JButton("Register");
         registerButton.setBackground(Color.decode("#97BFB1"));
         registerButton.setForeground(Color.WHITE);
-        registerButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                handleToRegister();
-            }
-        });
+        // registerButton.addActionListener(new ActionListener() {
+        //     @Override
+        //     public void actionPerformed(ActionEvent e) {
+        //         handleToRegister();
+        //     }
+        // });
 
         // Add semua button ke buttonPanel
         buttonPanel.add(loginButton);
@@ -87,19 +87,11 @@ public class HomeGUI extends JPanel {
         add(dateLabel, BorderLayout.SOUTH);
     }
 
-    /**
-     * Method untuk pergi ke halaman register.
-     * Akan dipanggil jika pengguna menekan "registerButton"
-     */
-    private static void handleToRegister() {
-        MainFrame.getInstance().navigateTo(RegisterGUI.KEY);
-    }
+    // private static void handleToRegister() {
+    //     MainFrame.getInstance().navigateTo(RegisterGUI.KEY);
+    // }
 
-    /**
-     * Method untuk pergi ke halaman login.
-     * Akan dipanggil jika pengguna menekan "loginButton"
-     */
     private static void handleToLogin() {
-        MainFrame.getInstance().navigateTo(LoginGUI.KEY);
+        Main.getInstance().navigateTo(LoginViews.KEY);
     }
 }
