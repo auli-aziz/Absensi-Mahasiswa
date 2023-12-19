@@ -1,4 +1,9 @@
+import java.awt.CardLayout;
+
+import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
+
+import proyek.user.LoginViews;
 /**
  * @author Kelompok 6
  *
@@ -11,12 +16,18 @@ public class Main {
                     createAndShowGUI();
                 } catch (Exception e) {
                     e.printStackTrace(); 
-                }
+                } 
             }
         });
     }
     
     public static void createAndShowGUI() throws Exception {
-        new Views();
+        LoginViews loginView = new LoginViews();
+        loginView.setTitle("Login");
+        loginView.setVisible(true);
+        loginView.setBounds(10,10,370,600);
+        loginView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        loginView.setResizable(false);
     }
+
 }
