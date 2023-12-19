@@ -15,6 +15,11 @@ public class LoginViews extends JFrame {
     JTextField userTextField = new JTextField(26);
     JTextField NPMTextField = new JTextField(26);
     JPasswordField passwordField = new JPasswordField(26);
+    static JButton loginButton = new JButton("Login");
+    static JButton resetButton = new JButton("Reset");
+    static JCheckBox showPassword = new JCheckBox("Tunjukkan Password"); 
+
+    JTextField searchTermTextField = new JTextField(26);
     
     LoginViews(){
         JTable table = new JTable();
@@ -24,9 +29,11 @@ public class LoginViews extends JFrame {
         table.setModel(model); 
 
         // Membuat controller
-        //LoginController controller = new LoginController(searchTermTextField, model);
-
+        LoginController controllerLogin = new LoginController(userTextField, NPMTextField,
+            passwordField, model);
+        loginButton.addActionListener(controllerLogin);
         
+
         // Mengganti border layout halaman login
         container.setLayout(null);
 
@@ -37,9 +44,9 @@ public class LoginViews extends JFrame {
         userTextField.setBounds(150,80,150,30);
         NPMTextField.setBounds(150,150,150,30);
         passwordField.setBounds(150,220,150,30);
-        LoginController.showPassword.setBounds(150,250,150,30);
-        LoginController.loginButton.setBounds(50,300,100,30);
-        LoginController.resetButton.setBounds(200,300,100,30);
+        showPassword.setBounds(150,250,150,30);
+        loginButton.setBounds(50,300,100,30);
+        resetButton.setBounds(200,300,100,30);
 
         // Error handling untuk input NPM
         NPMTextField.addKeyListener(new KeyAdapter() {
@@ -59,8 +66,8 @@ public class LoginViews extends JFrame {
         container.add(userTextField);
         container.add(NPMTextField);
         container.add(passwordField);
-        container.add(LoginController.showPassword);
-        container.add(LoginController.loginButton);
-        container.add(LoginController.resetButton);
+        container.add(showPassword);
+        container.add(loginButton);
+        container.add(resetButton);
     }
 }

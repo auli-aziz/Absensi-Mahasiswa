@@ -1,3 +1,5 @@
+import java.awt.CardLayout;
+
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 /**
@@ -12,7 +14,7 @@ public class Main {
                     createAndShowGUI();
                 } catch (Exception e) {
                     e.printStackTrace(); 
-                }
+                } 
             }
         });
     }
@@ -25,4 +27,5 @@ public class Main {
         loginView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         loginView.setResizable(false);
     }
+
 }
