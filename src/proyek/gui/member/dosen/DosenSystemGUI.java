@@ -50,12 +50,12 @@ public class DosenSystemGUI extends AbstractMemberGUI {
         cekStatusAbsensiButton.setForeground(Color.WHITE);
         cekStatusAbsensiButton.setPreferredSize(new Dimension(200, 50));
 
-        JButton addDaftarAbsensiButton = new JButton("Add Daftar Absensi");
-        addDaftarAbsensiButton.setBackground(Color.decode("#97BFB1"));
-        addDaftarAbsensiButton.setForeground(Color.WHITE);
-        addDaftarAbsensiButton.setPreferredSize(new Dimension(200, 50));
+        // JButton addDaftarAbsensiButton = new JButton("Add Daftar Absensi");
+        // addDaftarAbsensiButton.setBackground(Color.decode("#97BFB1"));
+        // addDaftarAbsensiButton.setForeground(Color.WHITE);
+        // addDaftarAbsensiButton.setPreferredSize(new Dimension(200, 50));
 
-        return new JButton[] { absenButton, cekStatusAbsensiButton, addDaftarAbsensiButton };
+        return new JButton[] { absenButton, cekStatusAbsensiButton };
     }
 
     /**

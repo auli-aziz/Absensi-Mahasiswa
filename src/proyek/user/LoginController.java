@@ -1,28 +1,39 @@
+package proyek.user;
+import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
-import javax.xml.crypto.Data;
+
+import proyek.Constants;
+import proyek.MainFrame;
+import proyek.gui.HomeGUI;
+import proyek.gui.member.dosen.DosenSystemGUI;
+import proyek.gui.member.mahasiswa.MahasiswaSystemGUI;
+import proyek.user.Menu.MahasiswaSystem;
+import proyek.user.Menu.SystemCLI;
  
 /**
  * @author Kelompok 6
  *
  */
 public class LoginController implements ActionListener {
-    private DefaultTableModel model;
     private JTextField userTextField = new JTextField(26);
     private JTextField NPMTextField = new JTextField(26);
     private JPasswordField passwordField = new JPasswordField(26);
+    private final CardLayout cards = new CardLayout();
+    final MahasiswaSystem mahasiswaSystem = new MahasiswaSystem();
+    private final MahasiswaSystemGUI mahasiswaSystemGUI = new MahasiswaSystemGUI(mahasiswaSystem);
+    private final JPanel mainPanel = new JPanel(cards);
 
-    public LoginController(JTextField nama, JTextField NPM, JPasswordField password, DefaultTableModel model) {
+    public LoginController(JTextField nama, JTextField NPM, JPasswordField password) {
         super();
         this.userTextField = nama;
         this.NPMTextField = NPM;
         this.passwordField = password;
-        this.model = model;
     }
 
     @Override
@@ -36,6 +47,8 @@ public class LoginController implements ActionListener {
                 if (o[0].equals(name) && o[1].equals(npm) && o[2].equals(password)){
                     System.out.println("Kepanggil");
                     // PINDAH KE MAIN ACTIVITY 
+                    //MainFrame.mainPanel.add(mahasiswaSystemGUI, MahasiswaSystemGUI.KEY);
+                    cards.show(MainFrame.mainPanel, MahasiswaSystemGUI.KEY);
                     return;
                 } 
             }
@@ -49,5 +62,8 @@ public class LoginController implements ActionListener {
         }
     } 
     
-    
+    // public void navigateTo(String page) {
+    //     // navigate page dengan CardLayout
+    //     cards.show(mainPanel, page);
+    // }
 }
