@@ -1,5 +1,3 @@
-
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -23,7 +21,8 @@ public class HomeViews extends JPanel {
 
         // Set up main panel
         mainPanel = new JPanel(new GridBagLayout());
-        mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10,
+         10, 10));
         mainPanel.setBackground(Color.WHITE);
 
         initGUI();
@@ -31,11 +30,6 @@ public class HomeViews extends JPanel {
         add(mainPanel, BorderLayout.CENTER);
     }
 
-    /**
-     * Method untuk menginisialisasi GUI.
-     * Selama funsionalitas sesuai dengan soal, tidak apa apa tidak 100% sama.
-     * Be creative and have fun!
-     */
     private void initGUI() {
         // Modifikasi label judul
         titleLabel = new JLabel("Selamat datang di Absensi Mahasiswa!");
