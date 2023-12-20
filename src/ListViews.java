@@ -1,6 +1,8 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 import java.awt.*;
 
 /**
@@ -33,6 +35,10 @@ public class ListViews extends JPanel {
         mahasiswaTable = new JTable(mahasiswaTableModel);
         dosenTable = new JTable(dosenTableModel);
 
+        // Set lebar kolom (misalnya, setiap kolom menjadi 150 piksel)
+        setColumnWidth(mahasiswaTable);
+        setColumnWidth(dosenTable);
+
         JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, mahasiswaTable, dosenTable);
         add(splitPane);
 
@@ -47,7 +53,7 @@ public class ListViews extends JPanel {
 
                 // Menandai baris yang sesuai dengan pengguna yang sedang login dengan warna hijau
                 if (rowData[0].equals(LoginViews.getLoggedInUserName())) {
-                    c.setBackground(Color.GREEN);
+                    c.setBackground(Color.decode("#97BFB1"));
                 } else {
                     c.setBackground(table.getBackground());
                 }
@@ -56,5 +62,15 @@ public class ListViews extends JPanel {
             }
         });
         setVisible(true);
+    }
+
+    private void setColumnWidth(JTable table) {
+        TableColumnModel columnModel = table.getColumnModel();
+        for (int column = 0; column < columnModel.getColumnCount(); column++) {
+            TableColumn col = columnModel.getColumn(column);
+            col.setMinWidth(150); // Atur lebar minimum
+            col.setMaxWidth(200); // Atur lebar maksimum
+            col.setPreferredWidth(150); // Atur lebar preferensi
+        }
     }
 }
