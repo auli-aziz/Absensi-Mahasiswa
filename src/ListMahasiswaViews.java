@@ -2,7 +2,6 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.util.Objects;
 
 public class ListMahasiswaViews extends JPanel {
     public static final String KEY = "LIST";
@@ -10,13 +9,12 @@ public class ListMahasiswaViews extends JPanel {
     private JScrollPane mahasiswaScrollPane, dosenScrollPane;
     private DefaultTableModel mahasiswaTableModel, dosenTableModel;
     public static boolean userLoggedIn = false;
-    private LoginViews loginViews;
 
     public ListMahasiswaViews() {
         initializeUI();
     }
 
-    private void initializeUI() {
+    protected void initializeUI() {
         setSize(800, 800);
 
         mahasiswaTableModel = new DefaultTableModel(Constants.DATA, Constants.TABLE_HEADER);

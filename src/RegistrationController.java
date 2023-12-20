@@ -25,6 +25,9 @@ public class RegistrationController implements ActionListener {
         Object[] data = {name, npm, pass, faculty, major};
         Constants.DATA = addRowToData(Constants.DATA, data);
 
+        handleBack();
+        ListMahasiswaViews listMahasiswaViews = new ListMahasiswaViews();
+        Main.mainPanel.add(listMahasiswaViews, ListMahasiswaViews.KEY);
         ArrayChecker.printDataArray();
     }
 
@@ -36,4 +39,12 @@ public class RegistrationController implements ActionListener {
         return newData;
     }
 
+    protected void handleBack() {
+        Main.getInstance().navigateTo(HomeViews.KEY);
+        view.nameTextField.setText("");
+        view.passwordField.setText("");
+        view.npmTextField.setText("");
+        view.facultyTextField.setText("");
+        view.majorTextField.setText("");
+    }
 }

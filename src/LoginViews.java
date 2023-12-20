@@ -42,7 +42,7 @@ public class LoginViews extends JPanel {
         // Error handling untuk input NPM
         NPMTextField.addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent key) {
-               if (key.getKeyChar() >= '0' && key.getKeyChar() <= '9') {
+               if (key.getKeyChar() >= '0' && key.getKeyChar() <= '9' || key.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
                   NPMTextField.setEditable(true);
                } else {
                   NPMTextField.setEditable(false);

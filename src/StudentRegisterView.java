@@ -72,13 +72,13 @@ public class StudentRegisterView extends JPanel{
         // frame.setLocationRelativeTo(null); //center
     }
 
-    private void handleBack() {
+    protected void handleBack() {
         Main.getInstance().navigateTo(HomeViews.KEY);
         nameTextField.setText("");
+        passwordField.setText("");
         npmTextField.setText("");
         facultyTextField.setText("");
         majorTextField.setText("");
-
     }
     
 }
