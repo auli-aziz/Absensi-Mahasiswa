@@ -11,7 +11,7 @@ public class Main extends JFrame {
     public static CardLayout cards = new CardLayout();
     public static JPanel mainPanel = new JPanel(cards);
     private final HomeViews homeGUI = new HomeViews();
-    private final ListMahasiswaViews listMahasiswaViews = new ListMahasiswaViews();
+    private final ListViews listMahasiswaViews = new ListViews();
     private final LoginViews loginViews = new LoginViews();
     private final StudentRegisterView registerView = new StudentRegisterView();
 
@@ -34,7 +34,7 @@ public class Main extends JFrame {
         
         mainPanel.add(registerView, StudentRegisterView.KEY);
 
-        mainPanel.add(listMahasiswaViews, ListMahasiswaViews.KEY);
+        mainPanel.add(listMahasiswaViews, ListViews.KEY);
     }
 
     public static Main getInstance() {

@@ -26,8 +26,8 @@ public class RegistrationController implements ActionListener {
         Constants.DATA = addRowToData(Constants.DATA, data);
 
         handleBack();
-        ListMahasiswaViews listMahasiswaViews = new ListMahasiswaViews();
-        Main.mainPanel.add(listMahasiswaViews, ListMahasiswaViews.KEY);
+        ListViews listMahasiswaViews = new ListViews();
+        Main.mainPanel.add(listMahasiswaViews, ListViews.KEY);
         ArrayChecker.printDataArray();
     }
 

@@ -3,14 +3,14 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
-public class ListMahasiswaViews extends JPanel {
+public class ListViews extends JPanel {
     public static final String KEY = "LIST";
     private JTable mahasiswaTable, dosenTable;
     private JScrollPane mahasiswaScrollPane, dosenScrollPane;
     private DefaultTableModel mahasiswaTableModel, dosenTableModel;
     public static boolean userLoggedIn = false;
 
-    public ListMahasiswaViews() {
+    public ListViews() {
         initializeUI();
     }
 

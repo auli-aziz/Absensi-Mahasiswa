@@ -28,11 +28,11 @@ public class LoginController implements ActionListener {
             for (Object[] o : Constants.DATA) {
                 if (o[0].equals(name) && o[1].equals(npm) && o[2].equals(password)) {
                     // Set flag bahwa user sudah login
-                    ListMahasiswaViews.userLoggedIn = true;
+                    ListViews.userLoggedIn = true;
                     LoginViews.handleSuccessfulLogin(name);
 
                     // Pindah ke ListMahasiswaViews
-                    ListMahasiswaViews listMahasiswaViews = new ListMahasiswaViews();
+                    ListViews listMahasiswaViews = new ListViews();
 
                     // Tutup frame LoginViews
                     // ((LoginViews) userTextField.getTopLevelAncestor()).dispose();
@@ -45,12 +45,12 @@ public class LoginController implements ActionListener {
             for (Object[] o : Constants.DATA2) {
                 if (o[0].equals(name) && o[1].equals(npm) && o[2].equals(password)) {
                     // Set flag bahwa user sudah login
-                    ListMahasiswaViews.userLoggedIn = true;
+                    ListViews.userLoggedIn = true;
                     LoginViews.handleSuccessfulLogin(name);
                     System.out.println("Kepanggil");
 
                     // Pindah ke ListMahasiswaViews
-                    ListMahasiswaViews listMahasiswaViews = new ListMahasiswaViews();
+                    ListViews listMahasiswaViews = new ListViews();
 
                     // Tutup frame LoginViews
                     // ((LoginViews) userTextField.getTopLevelAncestor()).dispose();
