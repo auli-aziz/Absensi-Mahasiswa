@@ -13,6 +13,7 @@ public class Main extends JFrame {
     private final HomeViews homeGUI = new HomeViews();
     private final ListMahasiswaViews listMahasiswaViews = new ListMahasiswaViews();
     private final LoginViews loginViews = new LoginViews();
+    private final StudentRegisterView registerView = new StudentRegisterView();
 
     public Main() {
         super("Absensi Mahasiswa");
@@ -30,6 +31,8 @@ public class Main extends JFrame {
         mainPanel.add(homeGUI, HomeViews.KEY);
 
         mainPanel.add(loginViews, LoginViews.KEY);
+        
+        mainPanel.add(registerView, StudentRegisterView.KEY);
 
         mainPanel.add(listMahasiswaViews, ListMahasiswaViews.KEY);
     }

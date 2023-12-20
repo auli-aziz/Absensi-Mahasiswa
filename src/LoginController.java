@@ -47,6 +47,7 @@ public class LoginController implements ActionListener {
                     // Set flag bahwa user sudah login
                     ListMahasiswaViews.userLoggedIn = true;
                     LoginViews.handleSuccessfulLogin(name);
+                    System.out.println("Kepanggil");
 
                     // Pindah ke ListMahasiswaViews
                     ListMahasiswaViews listMahasiswaViews = new ListMahasiswaViews();

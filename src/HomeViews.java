@@ -65,12 +65,12 @@ public class HomeViews extends JPanel {
         registerButton = new JButton("Register");
         registerButton.setBackground(Color.decode("#97BFB1"));
         registerButton.setForeground(Color.WHITE);
-        // registerButton.addActionListener(new ActionListener() {
-        //     @Override
-        //     public void actionPerformed(ActionEvent e) {
-        //         handleToRegister();
-        //     }
-        // });
+        registerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                handleToRegister();
+            }
+        });
 
         // Add semua button ke buttonPanel
         buttonPanel.add(loginButton);
@@ -87,9 +87,9 @@ public class HomeViews extends JPanel {
         add(dateLabel, BorderLayout.SOUTH);
     }
 
-    // private static void handleToRegister() {
-    //     MainFrame.getInstance().navigateTo(RegisterGUI.KEY);
-    // }
+    private static void handleToRegister() {
+        Main.getInstance().navigateTo(StudentRegisterView.KEY);
+    }
 
     private static void handleToLogin() {
         Main.getInstance().navigateTo(LoginViews.KEY);

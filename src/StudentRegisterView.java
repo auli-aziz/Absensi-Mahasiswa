@@ -1,21 +1,27 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * @author Kelompok 6
  *
  */
-public class StudentRegisterView {
-    //make register
+public class StudentRegisterView extends JPanel{
+    public static final String KEY = "REGISTER";
 
     public JTextField nameTextField;
     public JTextField npmTextField;
     public JTextField facultyTextField;
     public JTextField majorTextField;
+    public JPasswordField passwordField;
+    private JButton backButton;
 
     public StudentRegisterView() {
         JFrame frame = new JFrame("Registration Form");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        setBackground(Color.WHITE);
+        setLayout(new GridLayout(6, 2, 10, 10));
 
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
@@ -26,32 +32,53 @@ public class StudentRegisterView {
         facultyTextField = new JTextField(26);
         majorTextField = new JTextField(26);
 
-        Dimension textFieldSize = new Dimension(300, 30);
-        nameTextField.setPreferredSize(textFieldSize);
-        npmTextField.setPreferredSize(textFieldSize);
-        facultyTextField.setPreferredSize(textFieldSize);
-        majorTextField.setPreferredSize(textFieldSize);
+        // Dimension textFieldSize = new Dimension(300, 30);
+        // nameTextField.setPreferredSize(textFieldSize);
+        // npmTextField.setPreferredSize(textFieldSize);
+        // facultyTextField.setPreferredSize(textFieldSize);
+        // majorTextField.setPreferredSize(textFieldSize);
+
+        passwordField = new JPasswordField();
+
+        backButton = new JButton("Kembali");
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                handleBack();
+            }
+        });
 
         JButton registerButton = new JButton("Register");
         registerButton.addActionListener(new RegistrationController(this));
 
-        Dimension buttonSize = new Dimension(150, 40);
-        registerButton.setPreferredSize(buttonSize);
+        // Dimension buttonSize = new Dimension(150, 40);
+        // registerButton.setPreferredSize(buttonSize);
 
-        panel.add(new JLabel("Name:"));
-        panel.add(nameTextField);
-        panel.add(new JLabel("NPM:"));
-        panel.add(npmTextField);
-        panel.add(new JLabel("Faculty:"));
-        panel.add(facultyTextField);
-        panel.add(new JLabel("Major:"));
-        panel.add(majorTextField);
-        panel.add(registerButton);
+        add(new JLabel("Name:"));
+        add(nameTextField);
+        add(new JLabel("Masukkan password Anda:"));
+        add(passwordField);
+        add(new JLabel("NPM:"));
+        add(npmTextField);
+        add(new JLabel("Faculty:"));
+        add(facultyTextField);
+        add(new JLabel("Major:"));
+        add(majorTextField);
+        add(backButton);
+        add(registerButton);
 
-        frame.getContentPane().add(panel);
-        frame.pack();
-        frame.setLocationRelativeTo(null); //center
-        frame.setVisible(true); //visibility
+        // frame.getContentPane().add(panel);
+        // frame.pack();
+        // frame.setLocationRelativeTo(null); //center
+    }
+
+    private void handleBack() {
+        Main.getInstance().navigateTo(HomeViews.KEY);
+        nameTextField.setText("");
+        npmTextField.setText("");
+        facultyTextField.setText("");
+        majorTextField.setText("");
+
     }
     
 }

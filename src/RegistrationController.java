@@ -7,6 +7,7 @@ import java.util.Arrays;
  *
  */
 public class RegistrationController implements ActionListener {
+    
     private StudentRegisterView view;
 
     public RegistrationController(StudentRegisterView view) {
@@ -17,10 +18,11 @@ public class RegistrationController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String name = view.nameTextField.getText();
         String npm = view.npmTextField.getText();
+        String pass = String.valueOf(view.passwordField.getPassword());
         String faculty = view.facultyTextField.getText();
         String major = view.majorTextField.getText();
 
-        Object[] data = {name, npm, faculty, major};
+        Object[] data = {name, npm, pass, faculty, major};
         Constants.DATA = addRowToData(Constants.DATA, data);
 
         ArrayChecker.printDataArray();
