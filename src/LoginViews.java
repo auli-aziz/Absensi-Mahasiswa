@@ -3,10 +3,9 @@ import java.awt.*;
 import java.awt.event.*;
 
 /**
- * @author Kelompok 6
- *
+ * Kelas LoginViews merupakan tampilan untuk proses login dalam aplikasi.
+ * Memuat elemen-elemen GUI seperti label, teksfield, dan tombol yang terkait dengan proses login.
  */
-//Creating LoginFrame class
 public class LoginViews extends JPanel {
     public static final String KEY = "LOGIN";
     JLabel userLabel = new JLabel("Nama Anda");
@@ -15,20 +14,25 @@ public class LoginViews extends JPanel {
     JTextField userTextField = new JTextField(26);
     JTextField NPMTextField = new JTextField(26);
     JPasswordField passwordField = new JPasswordField(26);
-    private JButton backButton = new JButton("Kembali");;
+    private JButton backButton = new JButton("Kembali");
     static JButton loginButton = new JButton("Login");
     static JButton resetButton = new JButton("Reset");
     static JCheckBox showPassword = new JCheckBox("Tunjukkan Password");
     private static String loggedInUserName;
 
     JTextField searchTermTextField = new JTextField(26);
-    
+
+    /**
+     * Konstruktor untuk kelas LoginViews.
+     * Mengatur tampilan GUI untuk proses login, termasuk teksfield, tombol, dan fungsi-fungsi terkait.
+     */
     LoginViews(){
         setLayout(new GridLayout(7, 2, 10, 10));
         setBackground(Color.WHITE);
+
         // Membuat controller
         LoginController controllerLogin = new LoginController(userTextField, NPMTextField,
-            passwordField);
+                passwordField);
         loginButton.addActionListener(controllerLogin);
 
         backButton.addActionListener(new ActionListener() {
@@ -37,18 +41,17 @@ public class LoginViews extends JPanel {
                 handleBack();
             }
         });
-        
 
         // Error handling untuk input NPM
         NPMTextField.addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent key) {
-               if (key.getKeyChar() >= '0' && key.getKeyChar() <= '9' || key.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
-                  NPMTextField.setEditable(true);
-               } else {
-                  NPMTextField.setEditable(false);
-               }
+                if (key.getKeyChar() >= '0' && key.getKeyChar() <= '9' || key.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
+                    NPMTextField.setEditable(true);
+                } else {
+                    NPMTextField.setEditable(false);
+                }
             }
-         });
+        });
 
         // Menambahkan komponen label ke container
         add(userLabel);
@@ -82,14 +85,29 @@ public class LoginViews extends JPanel {
             }
         });
     }
+
+    /**
+     * Method untuk mendapatkan nama pengguna yang sedang login.
+     *
+     * @return String Nama pengguna yang sedang login.
+     */
     public static String getLoggedInUserName() {
         return loggedInUserName;
     }
 
+    /**
+     * Method untuk menangani proses login yang berhasil.
+     *
+     * @param name String Nama pengguna yang berhasil login.
+     */
     public static void handleSuccessfulLogin(String name) {
         loggedInUserName = name;
     }
 
+    /**
+     * Method untuk mengatur aksi saat tombol kembali ditekan.
+     * Kembali ke tampilan utama (HomeViews) setelah menekan tombol kembali.
+     */
     private void handleBack() {
         Main.getInstance().navigateTo(HomeViews.KEY);
         userTextField.setText("");

@@ -1,5 +1,3 @@
-
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -7,6 +5,10 @@ import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+/**
+ * Kelas HomeViews merupakan tampilan utama untuk aplikasi Absensi Mahasiswa.
+ * Menampilkan elemen GUI seperti judul, tombol Login dan Register, serta label tanggal.
+ */
 public class HomeViews extends JPanel {
     public static final String KEY = "HOME";
     public static SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
@@ -18,6 +20,10 @@ public class HomeViews extends JPanel {
     private JButton loginButton;
     private JButton registerButton;
 
+    /**
+     * Konstruktor untuk kelas HomeViews.
+     * Menginisialisasi tampilan GUI dengan judul, tombol, dan label yang ditampilkan.
+     */
     public HomeViews() {
         super(new BorderLayout()); // Setup layout
 
@@ -32,9 +38,8 @@ public class HomeViews extends JPanel {
     }
 
     /**
-     * Method untuk menginisialisasi GUI.
-     * Selama funsionalitas sesuai dengan soal, tidak apa apa tidak 100% sama.
-     * Be creative and have fun!
+     * Method untuk menginisialisasi GUI, termasuk judul, tombol Login dan Register, serta label tanggal.
+     * Beberapa modifikasi dapat dilakukan sesuai dengan kebutuhan fungsi aplikasi.
      */
     private void initGUI() {
         // Modifikasi label judul
@@ -87,10 +92,16 @@ public class HomeViews extends JPanel {
         add(dateLabel, BorderLayout.SOUTH);
     }
 
+    /**
+     * Method untuk menavigasi tampilan ke halaman registrasi mahasiswa.
+     */
     private static void handleToRegister() {
         Main.getInstance().navigateTo(StudentRegisterView.KEY);
     }
 
+    /**
+     * Method untuk menavigasi tampilan ke halaman login.
+     */
     private static void handleToLogin() {
         Main.getInstance().navigateTo(LoginViews.KEY);
     }

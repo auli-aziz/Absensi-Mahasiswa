@@ -16,6 +16,11 @@ import javax.swing.border.TitledBorder;
  */
 public class Views {
 
+    /**
+     * Konstruktor kelas Views.
+     * Inisialisasi komponen-komponen UI, model, dan controller.
+     * Menetapkan tata letak UI dan menampilkan JFrame.
+     */
     public Views() {
         // Membuat views swing UI components 
         JTextField searchTermTextField = new JTextField(26);
@@ -24,7 +29,7 @@ public class Views {
 
         // Membuat table model
         Model model = new Model();
-        table.setModel(model); 
+        table.setModel(model);
 
         // Membuat controller
         Controller controller = new Controller(searchTermTextField, model);
@@ -38,7 +43,7 @@ public class Views {
         JScrollPane tableScrollPane = new JScrollPane(table);
         tableScrollPane.setPreferredSize(new Dimension(700, 182));
         tableScrollPane.setBorder(BorderFactory.createTitledBorder(
-            BorderFactory.createEtchedBorder(), "Data Mahasiswa",
+                BorderFactory.createEtchedBorder(), "Data Mahasiswa",
                 TitledBorder.CENTER, TitledBorder.TOP));
 
         JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, ctrlPane, tableScrollPane);
@@ -52,6 +57,6 @@ public class Views {
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-        
+
     }
 }

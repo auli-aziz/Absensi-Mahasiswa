@@ -7,13 +7,33 @@ import java.util.Arrays;
  *
  */
 public class RegistrationController implements ActionListener {
-    
+
     private StudentRegisterView view;
+
+    /**
+     * Konstruktor untuk RegistrationController.
+     * Menerima parameter view yang digunakan untuk mengakses komponen-komponen UI.
+     *
+     * @param view Tampilan formulir pendaftaran mahasiswa.
+     */
 
     public RegistrationController(StudentRegisterView view) {
         this.view = view;
     }
 
+    /**
+     * Metode yang dipanggil ketika tombol "Register" ditekan.
+     * Mengambil data dari komponen-komponen UI pada StudentRegisterView,
+     * menambahkannya ke array data, kembali ke tampilan utama, dan menampilkan list mahasiswa terdaftar.
+     *
+     * @param e Objek ActionEvent yang menandakan aksi pengguna.
+     *
+     * @see Constants
+     * @see ListViews
+     * @see ArrayChecker
+     * @see HomeViews
+     * @see Main
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         String name = view.nameTextField.getText();
@@ -31,6 +51,14 @@ public class RegistrationController implements ActionListener {
         ArrayChecker.printDataArray();
     }
 
+    /**
+     * Menambahkan baris data baru ke array data yang ada.
+     *
+     * @param data Array data yang sudah ada.
+     * @param row Baris data yang akan ditambahkan.
+     * @return Array data yang baru setelah ditambahkan baris baru.
+     */
+
     private Object[][] addRowToData(Object[][] data, Object[] row) {
         int originalLength = data.length;
         int newLength = originalLength + 1;
@@ -39,6 +67,12 @@ public class RegistrationController implements ActionListener {
         return newData;
     }
 
+    /**
+     * Metode yang dipanggil untuk membersihkan input pada komponen-komponen UI
+     * setelah proses registrasi selesai.
+     *
+     * @see HomeViews
+     */
     protected void handleBack() {
         Main.getInstance().navigateTo(HomeViews.KEY);
         view.nameTextField.setText("");
