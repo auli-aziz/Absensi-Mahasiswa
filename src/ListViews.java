@@ -6,7 +6,6 @@ import java.awt.*;
 public class ListViews extends JPanel {
     public static final String KEY = "LIST";
     private JTable mahasiswaTable, dosenTable;
-    private JScrollPane mahasiswaScrollPane, dosenScrollPane;
     private DefaultTableModel mahasiswaTableModel, dosenTableModel;
     public static boolean userLoggedIn = false;
 
@@ -15,7 +14,6 @@ public class ListViews extends JPanel {
     }
 
     protected void initializeUI() {
-        setSize(800, 800);
 
         mahasiswaTableModel = new DefaultTableModel(Constants.DATA, Constants.TABLE_HEADER);
         dosenTableModel = new DefaultTableModel(Constants.DATA2, Constants.TABLE_HEADER2);
@@ -23,10 +21,7 @@ public class ListViews extends JPanel {
         mahasiswaTable = new JTable(mahasiswaTableModel);
         dosenTable = new JTable(dosenTableModel);
 
-        mahasiswaScrollPane = new JScrollPane(mahasiswaTable);
-        dosenScrollPane = new JScrollPane(dosenTable);
-
-        JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, mahasiswaScrollPane, dosenScrollPane);
+        JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, mahasiswaTable, dosenTable);
         add(splitPane);
 
         setVisible(true);
