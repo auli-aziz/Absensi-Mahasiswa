@@ -5,12 +5,24 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ * Kelas LoginController bertanggung jawab untuk mengontrol logika dari proses login pengguna.
+ * Menangani interaksi antara tampilan login dan model data untuk otentikasi pengguna.
+ */
 public class LoginController implements ActionListener {
     private DefaultTableModel model;
     private JTextField userTextField;
     private JTextField NPMTextField;
     private JPasswordField passwordField;
 
+    /**
+     * Konstruktor untuk kelas LoginController.
+     * Menerima JTextField untuk nama pengguna, NPM, dan JPasswordField untuk kata sandi.
+     *
+     * @param nama     JTextField untuk nama pengguna.
+     * @param NPM      JTextField untuk NPM pengguna.
+     * @param password JPasswordField untuk kata sandi pengguna.
+     */
     public LoginController(JTextField nama, JTextField NPM, JPasswordField password) {
         super();
         this.userTextField = nama;
@@ -18,6 +30,12 @@ public class LoginController implements ActionListener {
         this.passwordField = password;
     }
 
+    /**
+     * Metode actionPerformed dari ActionListener interface.
+     * Menangani aksi yang dilakukan ketika tombol login diklik.
+     *
+     * @param e ActionEvent yang terjadi, mengandung informasi mengenai aksi yang dilakukan.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         String name = userTextField.getText();
@@ -47,7 +65,6 @@ public class LoginController implements ActionListener {
                     // Set flag bahwa user sudah login
                     ListViews.userLoggedIn = true;
                     LoginViews.handleSuccessfulLogin(name);
-                    System.out.println("Kepanggil");
 
                     // Pindah ke ListMahasiswaViews
                     ListViews listMahasiswaViews = new ListViews();
@@ -67,7 +84,5 @@ public class LoginController implements ActionListener {
                     "Field cannot be empty", "Error",
                     JOptionPane.ERROR_MESSAGE);
         }
-
     }
-
 }

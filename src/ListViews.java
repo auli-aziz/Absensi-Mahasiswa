@@ -5,16 +5,28 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 import java.awt.*;
 
+/**
+ * Kelas ListViews bertanggung jawab untuk menampilkan daftar mahasiswa dan dosen dalam tabel terpisah.
+ */
 public class ListViews extends JPanel {
     public static final String KEY = "LIST";
     private JTable mahasiswaTable, dosenTable;
     private DefaultTableModel mahasiswaTableModel, dosenTableModel;
     public static boolean userLoggedIn = false;
 
+    /**
+     * Konstruktor untuk kelas ListViews.
+     * Menginisialisasi tampilan UI dengan tabel untuk daftar mahasiswa dan dosen.
+     */
     public ListViews() {
         initializeUI();
     }
 
+    /**
+     * Method untuk menginisialisasi tampilan UI.
+     * Memuat tabel untuk daftar mahasiswa dan dosen dalam satu frame menggunakan JSplitPane.
+     * Tabel mahasiswa memiliki highlight pada baris yang sesuai dengan pengguna yang sedang login.
+     */
     protected void initializeUI() {
 
         mahasiswaTableModel = new DefaultTableModel(Constants.DATA, Constants.TABLE_HEADER);
@@ -39,6 +51,7 @@ public class ListViews extends JPanel {
 
                 Object[] rowData = Constants.DATA[row];
 
+                // Menandai baris yang sesuai dengan pengguna yang sedang login dengan warna hijau
                 if (rowData[0].equals(LoginViews.getLoggedInUserName())) {
                     c.setBackground(Color.decode("#97BFB1"));
                 } else {

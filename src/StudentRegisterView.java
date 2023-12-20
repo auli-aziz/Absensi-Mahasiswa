@@ -17,16 +17,23 @@ public class StudentRegisterView extends JPanel{
     public JPasswordField passwordField;
     private JButton backButton;
 
+    /**
+     * Konstruktor kelas StudentRegisterView.
+     * Membuat dan mengatur tata letak komponen-komponen UI untuk formulir pendaftaran mahasiswa.
+     *
+     * @see Main
+     */
+
     public StudentRegisterView() {
         JFrame frame = new JFrame("Registration Form");
-        
+
         setBackground(Color.WHITE);
         setLayout(new GridLayout(6, 2, 10, 10));
 
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
-        // Membuat views swing UI components 
+        // Membuat views swing UI components
         nameTextField = new JTextField(26);
         npmTextField = new JTextField(26);
         facultyTextField = new JTextField(26);
@@ -71,6 +78,13 @@ public class StudentRegisterView extends JPanel{
         // frame.pack();
         // frame.setLocationRelativeTo(null); //center
     }
+    /**
+     * Metode yang dipanggil ketika tombol "Kembali" ditekan.
+     * Kembali ke tampilan utama dan menghapus semua input pada TextField.
+     *
+     * @see HomeViews
+     * @see Main
+     */
 
     protected void handleBack() {
         Main.getInstance().navigateTo(HomeViews.KEY);
@@ -80,5 +94,5 @@ public class StudentRegisterView extends JPanel{
         facultyTextField.setText("");
         majorTextField.setText("");
     }
-    
+
 }
